@@ -11,6 +11,24 @@ http://jade.talesoft.io/
 * YII 2.0
 * PHP 5.4+
 
+## Installation
+
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/). 
+
+To install, either run
+
+```
+$ php composer.phar require conquer/jade "*"
+```
+or add
+
+```
+"conquer/jade": "*"
+```
+
+to the ```require``` section of your `composer.json` file.
+
+
 
 ## Configuration
 ~~~php

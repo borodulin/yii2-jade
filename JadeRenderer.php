@@ -67,7 +67,7 @@ class JadeRenderer extends \yii\base\ViewRenderer
     {
         $params['this'] = $view;        
         
-        $filename = $this->cachePath . '/' . md5($file);
+        $filename = $this->cachePath . '/' . md5($file) . '.php';
         if ($this->debug || !file_exists($filename) || (time() - filemtime($filename) >= $this->cacheDuration)) {
             $this->jade->addPath(dirname($file));
             if (is_array($this->paths)) {

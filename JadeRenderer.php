@@ -1,4 +1,9 @@
 <?php
+/**
+ * @link https://github.com/borodulin/yii2-jade
+ * @copyright Copyright (c) 2015 Andrey Borodulin
+ * @license https://github.com/borodulin/yii2-jade/blob/master/LICENSE
+ */
 namespace conquer\jade;
 
 use Yii;
@@ -6,6 +11,14 @@ use Tale\Jade\Renderer;
 use Tale\Jade\Parser\Node;
 use Tale\Jade\Parser;
 
+/**
+ * 
+ * @author Andrey Borodulin
+ * 
+ * @link http://jade.talesoft.io/ 
+ * @link http://sandbox.jade.talesoft.io/
+ * @link http://jade-lang.com/reference/
+ */
 class JadeRenderer extends \yii\base\ViewRenderer
 {
     /**

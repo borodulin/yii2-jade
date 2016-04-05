@@ -1,0 +1,32 @@
+{
+    "name": "conquer/jade",
+    "description": "Jade renderer for the Yii2 framework",
+    "keywords": ["yii2", "jade", "renderer"],
+    "homepage": "https://github.com/borodulin/yii2-jade",
+    "type": "yii2-extension",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/borodulin/yii2-jade/issues",
+        "source": "https://github.com/borodulin/yii2-jade"
+    },
+    "authors": [
+        {
+            "name": "Andrey Borodulin",
+            "email": "borodulin@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": ">=2.0.5",
+         "talesoft/tale-jade": "*"
+    },
+    "autoload": {
+        "psr-4": {
+        	"conquer\\oauth2\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.0-dev"
+        }
+    }
+}

@@ -153,8 +153,8 @@ include partials/footer
 ~~~
 
 ### Custom filters
-We can wrap \Yii::t('category', $message) function to short form :t
-Just add filter in config file:
+For example, you can wrap \Yii::t('category', $message) function to short form of :t
+You should define a new filter in config file:
 ~~~php
 return [
     //....
@@ -166,7 +166,7 @@ return [
                 'class' => 'conquer\jade\JadeRenderer',
                 'filters' => [
                     't' => function($node, $indent, $newLine){
-                        return "<?=\Yii::t('cayegory', '" . trim($node->text()) ."')?>";
+                        return "<?=\Yii::t('category', '" . trim($node->text()) ."')?>";
                     },
                 ],
             ],
@@ -174,7 +174,7 @@ return [
     ],
 ];
 ~~~
-Now we can use this filter:
+Now you can use this filter:
 ~~~jade
 -
     use yii\helpers\Html;
@@ -183,6 +183,8 @@ Now we can use this filter:
     /* @var $model common\models\User */
     /* @var $form yii\widgets\ActiveForm */
 -
+    .h3
+        :t Change password
     $form = ActiveForm::begin([
         'action' => '/user/profile#tab_1_2',
         'options' => [

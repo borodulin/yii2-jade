@@ -127,7 +127,7 @@ include header
     include partials/sidebar
     != $content
 // END CONTAINER
-include footer
+include partials/footer
 
 - $this->endContent();
 ~~~

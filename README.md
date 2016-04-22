@@ -68,7 +68,6 @@ class SiteController extends Controller
 ### Main layout
 
 ~~~jade
-
 -
     use yii\bootstrap\Html;
     use assets\AppAsset;
@@ -96,13 +95,11 @@ html(lang=Yii::$app->language)
         != $content
         - $this->endBody()
     - $this->endPage()
-
 ~~~
     
 ### Sub layout
 
 ~~~jade
-
 -
     use yii\web\YiiAsset;
     use yii\base\Widget;
@@ -135,7 +132,6 @@ include partials/footer
 ### Login
 
 ~~~jade
-
 -
     use yii\helpers\Html
     use yii\bootstrap\ActiveForm
@@ -154,6 +150,56 @@ include partials/footer
             .form-group
                 !=Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button'])
             - ActiveForm::end()
+~~~
+
+### Custom filters
+We can wrap \Yii::t('category', $message) function to short form :t
+Just add filter in config file:
+~~~php
+return [
+    //....
+    'components' => [
+        'view' => [       
+            'defaultExtension' => 'jade',
+            'renderers' => [
+            'jade' => [
+                'class' => 'conquer\jade\JadeRenderer',
+                'filters' => [
+                    't' => function($node, $indent, $newLine){
+                        return "<?=\Yii::t('cayegory', '" . trim($node->text()) ."')?>";
+                    },
+                ],
+            ],
+        ],
+    ],
+];
+~~~
+Now we can use this filter:
+~~~jade
+-
+    use yii\helpers\Html;
+    use yii\widgets\ActiveForm;
+    /* @var $this yii\web\View */
+    /* @var $model common\models\User */
+    /* @var $form yii\widgets\ActiveForm */
+-
+    $form = ActiveForm::begin([
+        'action' => '/user/profile#tab_1_2',
+        'options' => [
+            'class' => 'form-horizontal'
+        ]
+    ]);
+
+!= $form->field($model, 'current_password')->passwordInput()
+!= $form->field($model, 'password')->passwordInput()
+!= $form->field($model, 'password_repeat')->passwordInput()
+
+.margin-top-10
+    button.btn.btn-primary(type='submit')
+        :t Submit
+    a.btn.default(href="javascript:;")
+        :t Cancel
+- ActiveForm::end();
 ~~~
 
 ## Links

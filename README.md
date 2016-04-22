@@ -82,10 +82,10 @@ html(lang=Yii::$app->language)
     head
         meta(charset="utf-8")
         title
-            - Html::encode($this->title)
+            != Html::encode($this->title)
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(content="width=device-width initial-scale=1", name="viewport")
-        - Html::csrfMetaTags()
+        != Html::csrfMetaTags()
         meta(content="", name="description")
         meta(content="", name="author")
         link(rel="shortcut icon", href="/favicon.ico")
@@ -122,8 +122,10 @@ include header
 // END HEADER & CONTENT DIVIDER
 // BEGIN CONTAINER
 .page-container
-    include sidebar
-    !=$content
+    // sidebar.jade is placed at @views/layouts/partials/sidebar.jade
+    // jade engine just puts rendered content here
+    include partials/sidebar
+    != $content
 // END CONTAINER
 include footer
 
@@ -146,9 +148,9 @@ include footer
     .row
         .col-lg-5
             - $form = ActiveForm::begin(['id' => 'login-form'])
-            !=$form->field($model, 'username')
-            !=$form->field($model, 'password')->passwordInput()
-            !=$form->field($model, 'rememberMe')->checkbox()
+            != $form->field($model, 'username')
+            != $form->field($model, 'password')->passwordInput()
+            != $form->field($model, 'rememberMe')->checkbox()
             .form-group
                 !=Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button'])
             - ActiveForm::end()

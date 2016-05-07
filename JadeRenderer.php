@@ -12,10 +12,10 @@ use Tale\Jade\Parser\Node;
 use Tale\Jade\Parser;
 
 /**
- * 
+ *
  * @author Andrey Borodulin
- * 
- * @link http://jade.talesoft.io/ 
+ *
+ * @link http://jade.talesoft.io/
  * @link http://sandbox.jade.talesoft.io/
  * @link http://jade-lang.com/reference/
  */
@@ -25,10 +25,10 @@ class JadeRenderer extends \yii\base\ViewRenderer
      * @var Renderer
      */
     protected $jade;
-    
+
     public $cachePath = '@runtime/Jade/cache';
     public $cacheDuration = 0;
-    
+
     /**
      * Jade options
      * @var array
@@ -36,12 +36,12 @@ class JadeRenderer extends \yii\base\ViewRenderer
     public $options = [
         'pretty' => true,
     ];
-    
+
     /**
      * @var bool
      */
     public $debug = false;
-    
+
     /**
      * Associative array of $name => $callback
      * The callback should have the following signature:
@@ -49,15 +49,15 @@ class JadeRenderer extends \yii\base\ViewRenderer
      * @var array
      */
     public $filters;
-    
+
     /**
      * Search paths
      * @var array
      */
     public $paths;
-    
+
     /**
-     * 
+     *
      * {@inheritDoc}
      * @see \yii\base\Object::init()
      */
@@ -70,9 +70,9 @@ class JadeRenderer extends \yii\base\ViewRenderer
         }
         $this->jade = new Renderer($this->options);
     }
-    
+
     /**
-     * 
+     *
      * {@inheritDoc}
      * @see \yii\base\ViewRenderer::render()
      */

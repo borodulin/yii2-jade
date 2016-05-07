@@ -38,9 +38,10 @@ return [
         'view' => [       
             'defaultExtension' => 'jade', // Set jade as default to use base view file names without extension.
             'renderers' => [
-            'jade' => [
-                'class' => 'conquer\jade\JadeRenderer',
-                'cacheDuration' => 0, // seconds. 0 - compile every time
+                'jade' => [
+                    'class' => 'conquer\jade\JadeRenderer',
+                    'cacheDuration' => 0, // seconds. 0 - compile every time
+                ],
             ],
         ],
     ],
@@ -182,9 +183,10 @@ Now you can use this filter:
     /* @var $this yii\web\View */
     /* @var $model common\models\User */
     /* @var $form yii\widgets\ActiveForm */
+    
+.h3
+    :t Change password
 -
-    .h3
-        :t Change password
     $form = ActiveForm::begin([
         'action' => '/user/profile#tab_1_2',
         'options' => [

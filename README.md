@@ -3,7 +3,7 @@ Yii2 Jade
 
 The Tale Jade Template Engine brings the popular and powerful Templating-Language Jade for Node.js to PHP!
 
-http://jade.talesoft.io/
+[Tale Jade for PHP](http://jade.talesoft.codes/)
 
 
 ## Requirements
@@ -207,7 +207,7 @@ Now you can use this filter:
 ~~~
 
 ## Links
-* [Tale Jade for PHP](http://jade.talesoft.io/)
+* [Tale Jade for PHP](http://jade.talesoft.codes/)
 
 ## License
 

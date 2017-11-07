@@ -6,26 +6,23 @@
  */
 namespace conquer\jade;
 
-use Yii;
 use Tale\Jade\Renderer;
-use Tale\Jade\Parser\Node;
-use Tale\Jade\Parser;
+use Yii;
+use yii\base\ViewRenderer;
+use yii\helpers\ArrayHelper;
+use yii\helpers\FileHelper;
 
 /**
  *
  * @author Andrey Borodulin
  *
- * @link http://jade.talesoft.io/
- * @link http://sandbox.jade.talesoft.io/
+ * @link http://jade.talesoft.codes/
+ * @link https://github.com/Talesoft/tale-jade
+ * @link http://sandbox.jade.talesoft.codes/
  * @link http://jade-lang.com/reference/
  */
-class JadeRenderer extends \yii\base\ViewRenderer
+class JadeRenderer extends ViewRenderer
 {
-    /**
-     * @var Renderer
-     */
-    protected $jade;
-
     public $cachePath = '@runtime/Jade/cache';
     public $cacheDuration = 0;
 
@@ -57,46 +54,42 @@ class JadeRenderer extends \yii\base\ViewRenderer
     public $paths;
 
     /**
-     *
      * {@inheritDoc}
-     * @see \yii\base\Object::init()
      */
     public function init()
     {
         parent::init();
-        $this->cachePath = \Yii::getAlias(rtrim($this->cachePath, '\\/'));
-        if (!file_exists($this->cachePath)) {
-            mkdir($this->cachePath, 0777, true);
-        }
-        $this->jade = new Renderer($this->options);
+        $this->cachePath = Yii::getAlias(rtrim($this->cachePath, '\\/'));
+        FileHelper::createDirectory($this->cachePath);
+        $this->options = ArrayHelper::merge([
+            'pretty' => $this->debug,
+        ], $this->options);
     }
 
     /**
-     *
-     * {@inheritDoc}
-     * @see \yii\base\ViewRenderer::render()
+     * @param \yii\base\View $view
+     * @param string $file
+     * @param array $params
+     * @return string
      */
     public function render($view, $file, $params)
     {
         $filename = $this->cachePath . '/' . md5($file) . '.php';
         if ($this->debug || !file_exists($filename) || (time() - filemtime($filename) >= $this->cacheDuration)) {
-            $this->jade->addPath(dirname($file));
+            $jade = new Renderer($this->options);
+            $jade->addPath(dirname($file));
             if (is_array($this->paths)) {
                 foreach ($this->paths as $path) {
-                    $this->jade->addPath(\Yii::getAlias($path));
+                    $jade->addPath(Yii::getAlias($path));
                 }
             }
             if (is_array($this->filters)) {
                 foreach ($this->filters as $name => $callback) {
-                    $this->jade->addFilter($name, $callback);
+                    $jade->addFilter($name, $callback);
                 }
             }
-            $data = $this->jade->compileFile($file);
+            $data = $jade->compileFile($file);
             file_put_contents($filename, $data);
-            if ($this->debug) {
-                $parser = new Parser();
-                \Yii::trace($parser->parse(file_get_contents($file)));
-            }
         }
         return $view->renderPhpFile($filename, $params);
     }

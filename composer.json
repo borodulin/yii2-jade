@@ -17,7 +17,7 @@
     ],
     "require": {
         "yiisoft/yii2": ">=2.0.5",
-         "talesoft/tale-jade": "*"
+         "talesoft/tale-jade": ">=1.4.5"
     },
     "autoload": {
         "psr-4": {
@@ -26,7 +26,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.2-dev"
+            "dev-master": "1.0.3-dev"
         }
     }
 }

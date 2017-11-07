@@ -13,13 +13,13 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 
 /**
- *
- * @author Andrey Borodulin
- *
  * @link http://jade.talesoft.codes/
  * @link https://github.com/Talesoft/tale-jade
  * @link http://sandbox.jade.talesoft.codes/
  * @link http://jade-lang.com/reference/
+ *
+ * Class JadeRenderer
+ * @package conquer\jade
  */
 class JadeRenderer extends ViewRenderer
 {

@@ -30,9 +30,7 @@ class JadeRenderer extends ViewRenderer
      * Jade options
      * @var array
      */
-    public $options = [
-        'pretty' => true,
-    ];
+    public $options;
 
     /**
      * @var bool
@@ -63,7 +61,7 @@ class JadeRenderer extends ViewRenderer
         FileHelper::createDirectory($this->cachePath);
         $this->options = ArrayHelper::merge([
             'pretty' => $this->debug,
-        ], $this->options);
+        ], (array)$this->options);
     }
 
     /**

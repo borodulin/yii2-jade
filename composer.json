@@ -5,6 +5,7 @@
     "homepage": "https://github.com/borodulin/yii2-jade",
     "type": "yii2-extension",
     "license": "MIT",
+    "abandoned": "conquer/pug",
     "support": {
         "issues": "https://github.com/borodulin/yii2-jade/issues",
         "source": "https://github.com/borodulin/yii2-jade"

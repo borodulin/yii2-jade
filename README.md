@@ -1,6 +1,8 @@
 Yii2 Jade
 =========================
 
+> **This package is abandoned and no longer maintained.** Jade was renamed to Pug: use [conquer/pug](https://github.com/borodulin/yii2-pug).
+
 The Tale Jade Template Engine brings the popular and powerful Templating-Language Jade for Node.js to PHP!
 
 [Tale Jade for PHP](http://jade.talesoft.codes/)
